@@ -1,5 +1,5 @@
 public class UserService {
     public void addUser(String name) {
-        System.out.println("User added from feature branch: " + name);  // Feature branch change
+        System.out.println("User added from both branches: " + name);  // Combined change
     }
 }
