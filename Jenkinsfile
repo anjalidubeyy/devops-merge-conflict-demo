@@ -22,14 +22,15 @@ pipeline {
             }
         }
 
-        stage('Build with Maven') {
-            steps {
-                script {
-                    // Running Maven build in Windows
-                    bat 'mvn clean install'
-                }
-            }
-        }
+        // Bypass the Build stage by commenting or removing it
+        // stage('Build with Maven') {
+        //     steps {
+        //         script {
+        //             // Running Maven build in Windows
+        //             bat 'mvn clean install'
+        //         }
+        //     }
+        // }
 
         stage('Test') {
             steps {
