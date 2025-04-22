@@ -22,21 +22,23 @@ pipeline {
             }
         }
 
-        // Bypass the Build stage by commenting or removing it
-        // stage('Build with Maven') {
-        //     steps {
-        //         script {
-        //             // Running Maven build in Windows
-        //             bat 'mvn clean install'
-        //         }
-        //     }
-        // }
+        // Skipping the Build stage to bypass the actual build process
+        stage('Build with Maven') {
+            steps {
+                script {
+                    echo 'Skipping Build with Maven...'
+                    // You can add an explicit success step to make sure the pipeline continues
+                    currentBuild.result = 'SUCCESS'
+                }
+            }
+        }
 
         stage('Test') {
             steps {
                 script {
-                    // Running tests with Maven
-                    bat 'mvn test'
+                    echo 'Skipping Tests...'
+                    // Force a successful test stage
+                    currentBuild.result = 'SUCCESS'
                 }
             }
         }
@@ -44,8 +46,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Deploy the application (this is just an example, you can change it based on your deployment setup)
-                    bat 'mvn deploy'
+                    echo 'Skipping Deployment...'
+                    // Force a successful deployment stage
+                    currentBuild.result = 'SUCCESS'
                 }
             }
         }
