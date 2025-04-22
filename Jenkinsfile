@@ -9,17 +9,20 @@ pipeline {
         }
         stage('Build with Maven') {
             steps {
+                // Ensure that Maven is installed and available
                 sh 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
+                // Run tests with Maven
                 sh 'mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                // Add deployment steps here
+                // Add deployment steps here, e.g., deployment to cloud or server
+                echo 'Deploying to environment...'
             }
         }
     }
